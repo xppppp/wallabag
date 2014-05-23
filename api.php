@@ -36,13 +36,30 @@ $user = $poche->store->login($uname, Tools::encodeString($upass . $uname), false
 if ($user != array()) {
 	Session::login($user['username'], $user['password'], $uname, $upass, false, array('poche_user' => new User($user)));
 	$poche->user = new User($user);
-	$poche->actionOnly = true;
-	#
-	# One could add an action parameter to the post, but I'm only supporting
-	# add operations here...
-	#
-	$poche->action('add', $url, $user['id']);
-	$xobj->status = 0;
-	$xobj->message = 'OK: added '.$url->getUrl();
+	$action = $_POST['action'];
+	switch ($action) {
+	       case 'add':
+	       	    	$poche->actionOnly = true;
+			$poche->action('add', $url, $user['id']);
+			$xobj->status = 0;
+			$xobj->message = 'OK: added '.$url->getUrl();
+			break;
+		case 'getAccess':
+			$token = $poche->user->getConfigValue('token');
+			if (empty($token)) {
+				$xobj->status = 3;
+				$xobj->message = "No access token available.";
+			} else {
+				$xobj->status = 0;
+				$xobj->userId = intval($user['id']);
+				$xobj->userToken = $token;
+				$xobj->message = "OK";
+			}
+			break;
+		default:
+			$xobj->status = 2;
+			$xobj->message = "Invalid action (".$action.")";
+			break;
+	}
 }
 Tools::renderJson($xobj);
