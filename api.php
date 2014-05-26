@@ -12,6 +12,8 @@ define ('POCHE', '1.6.1');
 require 'check_setup.php';
 require_once 'inc/poche/global.inc.php';
 
+header('Access-Control-Allow-Origin: *');
+
 # Start session
 Session::$sessionName = 'poche';
 Session::init();
