@@ -72,9 +72,10 @@ function download_pictures($absolute_path, $fullpath)
     if(file_exists($fullpath)) {
         unlink($fullpath);
     }
-    $fp = fopen($fullpath, 'x');
-    fwrite($fp, $rawdata);
-    fclose($fp);
+    if ($fp = fopen($fullpath, 'x')) {
+        fwrite($fp, $rawdata);
+        fclose($fp);
+    }
 }
 
 /**
