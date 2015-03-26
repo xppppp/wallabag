@@ -20,7 +20,6 @@ Session::init();
 
 # Start Poche
 $poche = new Poche();
-$notInstalledMessage = $poche -> getNotInstalledMessage();
 
 # Parse GET & REFERER vars
 $referer = empty($_SERVER['HTTP_REFERER']) ? '' : $_SERVER['HTTP_REFERER'];
