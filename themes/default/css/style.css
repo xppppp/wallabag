@@ -151,6 +151,16 @@ a:visited {
     text-indent: -9999px;
 }
 
+.random {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    text-align: left;
+    text-indent: -9999px;
+    background-image: url('../img/default/dice.png');
+}
+
 /*** ***/
 
 /*** ARTICLE PAGE ***/
@@ -417,6 +427,15 @@ a.add-to-wallabag-link-after:after {
   padding-left: 10px;
 }
 
+/* ==========================================================================
+	"Search" popup div related styles
+	========================================================================== */
+
+/* Search form message needs a little more width, depending on translations */
+#search-form {
+    width: 420px;
+}
+
 .opacity03 {
   /*opacity: 0.3;*/
 }
@@ -429,4 +448,10 @@ a.add-to-wallabag-link-after:after {
     text-indent: 0;
 		color: black;
 		width: 50px;
+}
+
+pre code {
+		font-family: "Courier New", Courier, monospace;
+		border: 1px solid #ddd;
+		font-size: 0.96em;
 }
