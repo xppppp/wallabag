@@ -246,6 +246,7 @@ class Poche
                 } else {
                     Tools::redirect('?view=home');
                 }
+		}
                 return $last_id;
                 break;
             case 'delete':
