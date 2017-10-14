@@ -45,6 +45,11 @@ if ($user != array()) {
 			$xobj->status = 0;
 			$xobj->message = 'OK: added '.$url->getUrl();
 			break;
+		case 'add2':
+			$poche->actionOnly = true;
+			$xobj->message = $poche->action('add', $url, $user['id']);
+			$xobj->status = 0;
+			break;
 		case 'getAccess':
 			$token = $poche->user->getConfigValue('token');
 			if (empty($token)) {
